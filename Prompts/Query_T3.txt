@@ -1,0 +1,28 @@
+We are generating Car Tracking Query for a camera system. There are 5 scenarios of cameras in that system: 
+1)	scenario 1 includes cameraID 1, 2, 3, 4, 5
+2)	Scenario 2 includes cameraID 6, 7, 8, 9
+3)	Scenario 3 includes cameraID: 10, 11, 12, 13, 14, 15
+4)	Scenario 4 includes cameraID: [16 to 40]
+5)	Scenario 5 includes cameraID: 10, [16 to 29], [33 to 36]
+The zoning information: 1e, 2f, 3d, 4e, 5e, 6g, 7e, 8f, 9e, 10d, 11d, 12b, 13d, 14e, 15c, 16e, 17d, 18b, 19d, 20c, 21b, 22d, 23b, 24c, 25b, 26d, 27e, 28d, 29d, 30c, 31b, 32c, 33f, 34e, 35c, 36f, 37c, 38c, 39c, 40d. Where 1e mean camera 1 containing zoneIDs 1a, 1b, 1c, 1d, 1e; 3d mean camera 3 contain zoneIDs 3a, 3b, 3c, 3d etc.
+Generate 20 car tracking queries for each scenario (totally 100 queries for 5 scenarios) using the following structure and components: 
+<Scenario ID>: Track all the <color> <vehicle_type> that moving from zone <zoneID1> to zone < zoneID2> in camera <cameraID>  <time>, and also appear at camera <cameraIDs> 
+Components: 
+1)	<color> (Choose one): white, black, red, blue, gray, grey, silver, brown, maroon, purple, green, tan, gold, yellow 
+2)	<vehicle_type> (Choose one): sedan, SUV, truck, pickup, van, wagon, hatchback, coupe, jeep, minivan 
+3)	<cameraID>: based on scenario ID, choose 1 random cameraID from list of cameraIDs above. Let call it original_cameraID
+4)	< zoneID1> Choose one zoneIDs from the list of zoneIDs in original_cameraID
+5)	< zoneID2> : Choose one zoneIDs from the list of zoneIDs in original_cameraID but must be different to < zoneID1>
+6)	<time> follow the format “from <time1> to <time2>” where:
+a)	<time1> are in the range [15-60] second
+b)	<time2> are in the range [120-240] second
+7)	<cameraIDs>: based on scenario ID, let choose randomly 1 to 3 cameraIDs from the list of cameraIDs above. Make sure the new cameraIDs are different from the original_cameraID
+Example Output: 
+•	Scenario 1: Track all the white sedan that moving from zone 1a to zone 1b in camera 1 from 15 second to 135 second, and also appear at camera 2,3 
+•	Scenario 2: Track all the black suv that moving from zone 7b to zone 7d in camera 7 from 30 second to 153 second, and also appear at camera 8
+•	Scenario 3: Track all the grey truck that moving from zone 14a to zone 14e in camera 14 from 53 second to 207, and also appear at camera 11, 13 
+•	Scenario 4: Track all the green sedan that moving from zone 22a to zone 22b in camera 22 from 18 second to 221, and also appear at camera 25, 29
+•	Scenario 5: Track all the yellow hatchback that moving from zone 28c to zone 28a in camera 28 from 59 second to 239 second, and also appear at camera 17, 32 
+
+Give the output in 2 columns format: column 1 is ScenarioID and column 2 is the queries
+ 
